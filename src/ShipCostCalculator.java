@@ -23,14 +23,18 @@ public class ShipCostCalculator {
             double shipCost = 0;
             double itemTotalCost = 0;
             System.out.println("Please give the price of your item: ");
-            itemCost = in.nextDouble();
-            if (itemCost >= 100) {
-                itemTotalCost = itemCost;
-                System.out.println("Your shipping is 0 and your total cost is: " + itemTotalCost);
+            if (in.hasNextDouble()) {
+                itemCost = in.nextDouble();
+                if (itemCost >= 100) {
+                    itemTotalCost = itemCost;
+                    System.out.println("Your shipping is 0 and your total cost is: " + itemTotalCost);
+                } else {
+                    shipCost = itemCost * 0.02;
+                    itemTotalCost = itemCost + shipCost;
+                    System.out.println("Your shipping is: " + shipCost + " and your total cost is: " + itemTotalCost);
+                }
             } else {
-                shipCost = itemCost * 0.02;
-                itemTotalCost = itemCost + shipCost;
-                System.out.println("Your shipping is: " + shipCost + " and your total cost is: " + itemTotalCost);
+                System.out.println("Invalid input. Please enter a numeric value for the item price.");
             }
     }
 }
